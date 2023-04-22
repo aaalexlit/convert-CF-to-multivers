@@ -53,13 +53,9 @@ with jsonlines.open('claims_comb_train.jsonl', 'w') as claims_train_writer, \
                 }
                 if f"{cur_doc_id}" in cur_evidence_dict:
                     exist_sents = cur_evidence_dict[f"{cur_doc_id}"]
-                    appended = False
                     for s in exist_sents:
                         if s['label'] == curr_sent['label']:
                             s['sentences'].append(sent_ind)
-                            appended = True
-                    if not appended:
-                        exist_sents.append(curr_sent)
                 else:
                     cur_evidence_dict[f"{cur_doc_id}"] = [curr_sent]
 

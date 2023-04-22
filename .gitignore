@@ -7,3 +7,5 @@
 /data
 /data_train
 /global_warming_abstract.txt
+claims_comb_test.bak.jsonl
+claims_comb_train.bak.jsonl
