@@ -36,8 +36,9 @@ with jsonlines.open('claims_comb_train.jsonl', 'w') as claims_train_writer, \
             cur_claim_doc_ids.add(cur_doc_id)
             abstract = doc["abstract"]
             # Don't allow abstracts longer than 4096 otherwise longformer won't work
-            # actually, somewhere down the line when training the abstracts get concatentated
-            # so this number need to be lower no to cause errors
+            # during training the abstracts get concatentated
+            # with the corresponding claims (and each other?)
+            # so this number need to be lower not to surpass the limit of tokens that longformer accepts
             if len(''.join(abstract).split()) > 2900:
                 continue
             if not evidence_sent in indexed_evidence_sents:
